@@ -1,0 +1,68 @@
+import random
+import os
+import Higher_Lower_info
+import higher_lower_logo
+
+
+print(higher_lower_logo.logo)
+def counter(account) :
+    name=account['name']
+    profession=account['profession']
+    country=account['country']
+    return f" {name} , a/an {profession} ,from {country}"
+
+def checker(press,followers_1,followers_2):
+    if press==1:
+        if   followers_1<followers_2 :
+            return False
+            
+        else :
+            return True
+    elif press==2 :
+        if followers_1<followers_2 :
+            return True
+        else :
+            return False
+    else : 
+        print("You pressed a wrong character 1  !")
+    
+account_2=random.choice(Higher_Lower_info.information)
+    
+score=0
+end_of_game=True
+while end_of_game :
+    account_1=account_2
+    account_2=random.choice(Higher_Lower_info.information)
+
+    while account_1==account_2:
+        account_2=random.choice(Higher_Lower_info.information)
+    
+    print("Compare 1 : ", counter(account_1)) 
+    print(higher_lower_logo.vs_logo)
+    print("Compare 2 : ", counter(account_2)) 
+    press=int(input("Who has more followers on insta in Millions \nPress <1> for Compare 1 or Press <2> for Compare 2 :"))
+    print(round(int(account_1['followers']))) 
+    print(round(int(account_2['followers'])))   
+    followers_1=account_1['followers']
+    followers_2=account_2['followers']
+
+    os.system('cls')
+    is_correct=checker(press,followers_1,followers_2)
+    if is_correct:
+        score+=1
+        print(f" Your Score is {score}")
+    else :
+        print(f"You are wrong , your final score is {score}")  
+        end_of_game=False  
+
+       
+
+    
+
+
+
+
+
+ 
+
+  
